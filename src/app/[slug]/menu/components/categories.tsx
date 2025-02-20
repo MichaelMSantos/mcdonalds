@@ -73,7 +73,12 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
             </ScrollArea>
 
             <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
-            <Products products={selectedCategory.products} />
+            <ScrollArea>
+                <div className="h-[calc(100vh-26rem)]">
+                    <Products products={selectedCategory.products} />
+                    <ScrollBar orientation="vertical" />
+                </div>
+            </ScrollArea>
         </div>
     );
 };
