@@ -22,9 +22,9 @@ model Restaurant {
   coverImageUrl  String
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
-  MenuCategory   MenuCategory[]
-  Product        Product[]
-  Order          Order[]
+  menuCategories MenuCategory[]
+  products       Product[]
+  orders         Order[]
 }
 
 model MenuCategory {
@@ -34,7 +34,7 @@ model MenuCategory {
   restaurantId String
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
-  Product      Product[]
+  products     Product[]
 }
 
 model Product {
@@ -50,7 +50,7 @@ model Product {
   menuCategoryId String
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
-  OrderProduct   OrderProduct[]
+  OrderProducts  OrderProduct[]
 }
 
 model Order {
@@ -58,7 +58,7 @@ model Order {
   total             Float
   status            OrderStatus
   consumptionMethod ConsumptionMethod
-  OrderProducts     OrderProduct[]
+  orderProducts     OrderProduct[]
 
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   restaurantId String
