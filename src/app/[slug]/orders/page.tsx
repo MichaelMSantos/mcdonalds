@@ -19,6 +19,9 @@ const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
     }
 
     const orders = await db.order.findMany({
+        orderBy: {
+            createdAt: 'desc'
+        },
         where: {
             customerCpf: removeCpfPunctuation(cpf),
         },
@@ -29,8 +32,8 @@ const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
                     avatarImageUrl: true,
                 }
             },
-            orderProducts:{
-                include:{
+            orderProducts: {
+                include: {
                     product: true,
                 }
             }
